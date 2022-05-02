@@ -1,0 +1,67 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"airbnb",
+		"prettier",
+		"plugin:prettier/recommended",
+		"plugin:react/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"eslint-plugin-import-helpers",
+		"react",
+		"@typescript-eslint",
+		"prettier",
+		"unused-imports"
+	],
+	"rules": {
+		"prettier/prettier": "error",
+		"arrow-body-style": "off",
+		"prefer-arrow-callback": "off",
+		"react/jsx-filename-extension": "off",
+		"react/react-in-jsx-scope": "off",
+		"import/prefer-default-export": "off",
+		"import/extensions": "off",
+		"import/no-unresolved": "off",
+		"react/button-has-type": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+		"react/jsx-uses-react": 1,
+		"react/jsx-uses-vars": 1,
+		"unused-imports/no-unused-imports": "error",
+		"unused-imports/no-unused-vars": [
+			"warn",
+			{
+				"vars": "all",
+				"varsIgnorePattern": "^_",
+				"args": "after-used",
+				"argsIgnorePattern": "^_"
+			}
+		],
+		"import-helpers/order-imports": [
+			"warn",
+			{
+				"newlinesBetween": "always",
+				"groups": [
+					"module",
+					"/^@server/shared/",
+					"/^@/",
+					["parent", "sibling", "index"]
+				],
+				"alphabetize": {
+					"order": "asc",
+					"ignoreCase": true
+				}
+			}
+		]
+	}
+}
