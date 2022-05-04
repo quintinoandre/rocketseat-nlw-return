@@ -1,5 +1,7 @@
+/* GERAL */
 * {
 	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -8,34 +10,188 @@
 	--primary-color: hsl(170, 100%, 26%);
 	--headline: hsl(210, 11%, 15%);
 	--paragraph: hsl(210, 9%, 31%);
+	--brand-beige: hsl(39, 100%, 97%);
+	--brand-light: hsl(148, 23%, 89%);
+	--nav-height: 7.2rem;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
 }
 
 body {
 	font-family: 'DM Sans';
 	font-size: 1.6rem;
 	text-align: center;
+	overflow: overlay;
 }
 
-header {
+.wrapper {
 	width: 37.5rem;
-	margin: 0 auto;
-	margin-top: 4.1rem;
+	margin-inline: auto;
+	padding-inline: 2.4rem;
 }
 
-h4 {
+ul {
+	list-style: none;
+}
+
+/* NAVIGATION */
+.c-nav {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	height: var(--nav-height);
+}
+
+.c-nav .wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.c-nav.scroll {
+	background-color: var(--primary-color);
+	width: 100vw;
+}
+
+.c-nav.scroll svg:nth-child(1) path {
+	fill: white;
+}
+
+.c-nav.scroll .c-button-open-menu path {
+	stroke: white;
+}
+
+.c-nav .c-button-open-menu,
+.c-nav .c-button-close-menu {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+/* MENU-EXPANDED */
+body.menu-expanded {
+	overflow: hidden;
+}
+
+body.menu-expanded > :not(nav) {
+	display: none;
+}
+
+.c-menu,
+.c-nav .c-button-close-menu,
+body.menu-expanded .c-nav .c-button-open-menu {
+	opacity: 0;
+	visibility: hidden;
+}
+
+body.menu-expanded .c-menu,
+body.menu-expanded .c-nav .c-button-close-menu {
+	opacity: 1;
+	visibility: visible;
+}
+
+body.menu-expanded .c-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: var(--primary-color);
+	width: 100vw;
+	height: 100vh;
+	padding-top: var(--nav-height);
+}
+
+body.menu-expanded .c-nav {
+	position: relative;
+}
+
+.c-menu__a-button {
+	display: inline-block;
+	padding: 1.6rem 3.2rem;
+	background-color: white;
+	border-radius: 4rem;
+	font-weight: 700;
+	font-size: 1.8rem;
+	line-height: 2.3rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--primary-color);
+	margin-top: 4.8rem;
+	margin-bottom: 8rem;
+}
+
+.c-menu__ul {
+	display: flex;
+	flex-direction: column;
+	gap: 4.8rem;
+	margin-top: 6rem;
+	font-weight: 700;
+	font-size: 2.4rem;
+	line-height: 3.1rem;
+}
+
+.c-menu__a {
+	color: white;
+	text-decoration: none;
+}
+
+.c-menu__ul-social-links {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 3.2rem;
+}
+
+body.menu-expanded .c-nav__a,
+body.menu-expanded .c-nav .c-button-close-menu {
+	position: relative;
+	z-index: 100;
+}
+
+body.menu-expanded .c-nav__a path {
+	fill: white;
+}
+
+body.menu-expanded .c-nav .c-button-close-menu path {
+	stroke: white;
+}
+
+/* HEADER */
+header::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: calc(108rem + var(--nav-height));
+	background-color: var(--brand-light);
+}
+
+.c-header {
+	margin-top: calc(4.1rem + var(--nav-height));
+}
+
+.c-header__h4 {
 	font-size: 1.4rem;
 	color: var(--primary-color);
 	margin-bottom: 1.6rem;
 }
 
-h1 {
+.c-header__title {
 	font-size: 3.4rem;
 	color: var(--headline);
 	line-height: 4.42rem;
 	margin-bottom: 2.4rem;
 }
 
-p {
+.c-header__p {
 	font-size: 1.8rem;
 	line-height: 2.7rem;
 	font-weight: 400;
@@ -43,20 +199,52 @@ p {
 	margin-bottom: 3.2rem;
 }
 
-button {
+.c-header .c-button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 0 auto;
-	margin-bottom: 6rem;
+	margin: 0 auto 6rem;
 	width: 26.3rem;
 	height: 5.2rem;
 	gap: 1.6rem;
-	background: var(--primary-color);
+	background-color: var(--primary-color);
 	border: none;
 	border-radius: 4rem;
 	color: #ffffff;
 	text-transform: uppercase;
 	font-size: 1.4rem;
 	font-weight: 700;
+}
+
+.c-header .c-img {
+	width: 26.4rem;
+	display: block;
+	margin-inline: auto;
+	object-position: 0 2rem;
+}
+
+.c-header__stats {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 32.7rem;
+	padding-block: 4rem;
+	margin-inline: auto;
+	background-color: var(--brand-beige);
+	border: 0.1rem solid var(--brand-light);
+	border-radius: 0.6rem;
+	gap: 6rem;
+}
+
+.c-header__stats__h3 {
+	font-size: 4.8rem;
+	color: var(--headline);
+	line-height: 6.2rem;
+	margin-bottom: 0.4rem;
+}
+
+.c-header__stats__p {
+	margin: 0;
+	color: var(--primary-color);
+	line-height: 2.4rem;
 }
