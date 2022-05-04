@@ -1,0 +1,95 @@
+{
+	"_type": "export",
+	"__export_format": 4,
+	"__export_date": "2022-05-04T19:47:20.933Z",
+	"__export_source": "insomnia.desktop.app:v2022.2.1",
+	"resources": [
+		{
+			"_id": "req_199a65143bb147f4bfb9d9fee005306f",
+			"parentId": "wrk_6ae98221fcdf433b8c40050cc6770442",
+			"modified": 1651693620009,
+			"created": 1651674305666,
+			"url": "{{ _.baseURL }}/feedbacks",
+			"name": "Create feedback",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"type\": \"BUG\",\n\t\"comment\": \"bug!!!\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_fa411167a77d4f8a928bc7078c2549c8"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1651674305666,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "wrk_6ae98221fcdf433b8c40050cc6770442",
+			"parentId": null,
+			"modified": 1651674176574,
+			"created": 1651674176574,
+			"name": "rocketseat-nlw-return",
+			"description": "",
+			"scope": "collection",
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_7c7f55484d0193376876df5c55019099ee3711f1",
+			"parentId": "wrk_6ae98221fcdf433b8c40050cc6770442",
+			"modified": 1651674209597,
+			"created": 1651674176583,
+			"name": "Base Environment",
+			"data": {},
+			"dataPropertyOrder": {},
+			"color": null,
+			"isPrivate": false,
+			"metaSortKey": 1651674176583,
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_7c7f55484d0193376876df5c55019099ee3711f1",
+			"parentId": "wrk_6ae98221fcdf433b8c40050cc6770442",
+			"modified": 1651674176585,
+			"created": 1651674176585,
+			"name": "Default Jar",
+			"cookies": [],
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "spc_5c196442b6574fb38cfd073056418ca1",
+			"parentId": "wrk_6ae98221fcdf433b8c40050cc6770442",
+			"modified": 1651674176576,
+			"created": 1651674176576,
+			"fileName": "rocketseat-nlw-return",
+			"contents": "",
+			"contentType": "yaml",
+			"_type": "api_spec"
+		},
+		{
+			"_id": "env_050d8e40a26a4e10b5451867ac499204",
+			"parentId": "env_7c7f55484d0193376876df5c55019099ee3711f1",
+			"modified": 1651674286453,
+			"created": 1651674212079,
+			"name": "development",
+			"data": { "baseURL": "http://localhost:3333" },
+			"dataPropertyOrder": { "&": ["baseURL"] },
+			"color": null,
+			"isPrivate": false,
+			"metaSortKey": 1651674212079,
+			"_type": "environment"
+		}
+	]
+}

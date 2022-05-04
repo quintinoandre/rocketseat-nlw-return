@@ -1,0 +1,53 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/server.ts",
+	"scripts": {
+		"dev": "ts-node-dev -r dotenv/config --exit-child --transpile-only --respawn --ignore-watch node_modules --no-notify .",
+		"migration:create": "npx prisma migrate dev",
+		"see:database": "npx prisma studio",
+		"test": "jest",
+		"lint": "eslint ./",
+		"lintFix": "eslint ./ --fix",
+		"format": "prettier --write \"**/*.{js,json,md,ts}\""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@prisma/client": "^3.13.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.0",
+		"express": "^4.18.1",
+		"express-async-errors": "^3.1.1",
+		"helmet": "^5.0.2",
+		"morgan": "^1.10.0",
+		"nodemailer": "^6.7.5"
+	},
+	"devDependencies": {
+		"@swc/core": "^1.2.177",
+		"@swc/jest": "^0.2.20",
+		"@types/cors": "^2.8.12",
+		"@types/express": "^4.17.13",
+		"@types/jest": "^27.5.0",
+		"@types/morgan": "^1.9.3",
+		"@types/node": "^17.0.31",
+		"@types/nodemailer": "^6.4.4",
+		"@typescript-eslint/eslint-plugin": "^5.22.0",
+		"@typescript-eslint/parser": "^5.22.0",
+		"eslint": "^8.14.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-import-helpers": "^1.2.1",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-unused-imports": "^2.0.0",
+		"jest": "^28.0.3",
+		"prettier": "^2.6.2",
+		"prisma": "^3.13.0",
+		"ts-node": "^10.7.0",
+		"ts-node-dev": "^1.1.8",
+		"typescript": "^4.6.4"
+	}
+}
