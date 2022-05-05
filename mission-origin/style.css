@@ -1,4 +1,4 @@
-/* GERAL */
+/*! GERAL */
 * {
 	margin: 0;
 	padding: 0;
@@ -12,7 +12,12 @@
 	--paragraph: hsl(210, 9%, 31%);
 	--brand-beige: hsl(39, 100%, 97%);
 	--brand-light: hsl(148, 23%, 89%);
+	--bg-light: hsl(180, 14%, 97%);
 	--nav-height: 7.2rem;
+}
+
+html {
+	scroll-behavior: smooth;
 }
 
 html,
@@ -22,10 +27,11 @@ body {
 }
 
 body {
+	overflow: overlay;
+	background: var(--bg-light);
 	font-family: 'DM Sans';
 	font-size: 1.6rem;
 	text-align: center;
-	overflow: overlay;
 }
 
 .wrapper {
@@ -38,14 +44,52 @@ ul {
 	list-style: none;
 }
 
-/* NAVIGATION */
+img {
+	max-width: 100%;
+}
+
+section {
+	padding-block: 10rem;
+}
+
+section header h4 {
+	margin-bottom: 1.6rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 2.1rem;
+	letter-spacing: 0.08rem;
+	text-transform: uppercase;
+	color: var(--primary-color);
+}
+
+section header h2 {
+	font-size: 3rem;
+	line-height: 3.9rem;
+	color: var(--headline);
+}
+
+section header h1 {
+	font-size: 3.4rem;
+	color: var(--headline);
+	line-height: 4.42rem;
+	margin-bottom: 2.4rem;
+}
+
+section .content p {
+	font-weight: 400;
+	font-size: 1.6rem;
+	line-weight: 2.4rem;
+	color: var(--paragraph);
+}
+
+/*! NAVIGATION */
 .c-nav {
 	display: flex;
 	position: fixed;
 	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
 	height: var(--nav-height);
+	z-index: 100;
+	width: 100vw;
 }
 
 .c-nav .wrapper {
@@ -56,10 +100,9 @@ ul {
 
 .c-nav.scroll {
 	background-color: var(--primary-color);
-	width: 100vw;
 }
 
-.c-nav.scroll svg:nth-child(1) path {
+.c-nav.scroll .c-nav__a-logo path {
 	fill: white;
 }
 
@@ -68,35 +111,39 @@ ul {
 }
 
 .c-nav .c-button-open-menu,
-.c-nav .c-button-close-menu {
+.c-nav .c-button-close {
 	background: none;
 	border: none;
 	cursor: pointer;
 }
 
-/* MENU-EXPANDED */
+/*! MENU-EXPANDED */
 body.menu-expanded {
 	overflow: hidden;
 }
 
 body.menu-expanded > :not(nav) {
-	display: none;
+	visibility: hidden;
 }
 
-.c-menu,
-.c-nav .c-button-close-menu,
+.c-nav .c-menu,
+.c-nav .c-button-close,
 body.menu-expanded .c-nav .c-button-open-menu {
 	opacity: 0;
 	visibility: hidden;
 }
 
-body.menu-expanded .c-menu,
-body.menu-expanded .c-nav .c-button-close-menu {
+body.menu-expanded .c-nav .c-menu,
+body.menu-expanded .c-nav .c-button-close {
 	opacity: 1;
 	visibility: visible;
 }
 
-body.menu-expanded .c-menu {
+.c-nav .c-menu {
+	transform: translateY(100%);
+}
+
+body.menu-expanded .c-nav .c-menu {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -104,13 +151,11 @@ body.menu-expanded .c-menu {
 	width: 100vw;
 	height: 100vh;
 	padding-top: var(--nav-height);
+	transition: transform 300ms;
+	transform: translateY(0);
 }
 
-body.menu-expanded .c-nav {
-	position: relative;
-}
-
-.c-menu__a-button {
+.c-nav .c-menu__a-button-schedule-appointment {
 	display: inline-block;
 	padding: 1.6rem 3.2rem;
 	background-color: white;
@@ -125,7 +170,7 @@ body.menu-expanded .c-nav {
 	margin-bottom: 8rem;
 }
 
-.c-menu__ul {
+.c-nav .c-menu__ul-items-links {
 	display: flex;
 	flex-direction: column;
 	gap: 4.8rem;
@@ -140,29 +185,29 @@ body.menu-expanded .c-nav {
 	text-decoration: none;
 }
 
-.c-menu__ul-social-links {
+.c-nav .c-menu__ul-social-links {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 3.2rem;
 }
 
-body.menu-expanded .c-nav__a,
-body.menu-expanded .c-nav .c-button-close-menu {
+body.menu-expanded .c-nav__a-logo,
+body.menu-expanded .c-nav .c-button-close {
 	position: relative;
 	z-index: 100;
 }
 
-body.menu-expanded .c-nav__a path {
+body.menu-expanded .c-nav__a-logo path {
 	fill: white;
 }
 
-body.menu-expanded .c-nav .c-button-close-menu path {
+body.menu-expanded .c-nav .c-button-close path {
 	stroke: white;
 }
 
-/* HEADER */
-header::before {
+/*! HOME */
+.c-home::before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -174,24 +219,12 @@ header::before {
 	background-color: var(--brand-light);
 }
 
-.c-header {
-	margin-top: calc(4.1rem + var(--nav-height));
+.c-home {
+	padding-top: calc(4.1rem + var(--nav-height));
+	padding-bottom: 0;
 }
 
-.c-header__h4 {
-	font-size: 1.4rem;
-	color: var(--primary-color);
-	margin-bottom: 1.6rem;
-}
-
-.c-header__title {
-	font-size: 3.4rem;
-	color: var(--headline);
-	line-height: 4.42rem;
-	margin-bottom: 2.4rem;
-}
-
-.c-header__p {
+.c-home__p {
 	font-size: 1.8rem;
 	line-height: 2.7rem;
 	font-weight: 400;
@@ -199,7 +232,7 @@ header::before {
 	margin-bottom: 3.2rem;
 }
 
-.c-header .c-button {
+.c-home .c-button-schedule-appointment {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -216,14 +249,14 @@ header::before {
 	font-weight: 700;
 }
 
-.c-header .c-img {
+.c-home .c-img {
 	width: 26.4rem;
 	display: block;
 	margin-inline: auto;
 	object-position: 0 2rem;
 }
 
-.c-header__stats {
+.c-home__stats {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -236,15 +269,53 @@ header::before {
 	gap: 6rem;
 }
 
-.c-header__stats__h3 {
+.c-home__stats__h3 {
 	font-size: 4.8rem;
 	color: var(--headline);
 	line-height: 6.2rem;
 	margin-bottom: 0.4rem;
 }
 
-.c-header__stats__p {
+.c-home__stats__p {
 	margin: 0;
 	color: var(--primary-color);
 	line-height: 2.4rem;
+}
+
+/*! SERVICES */
+#services header h2 {
+	margin-bottom: 6rem;
+}
+
+#services .c-cards {
+	display: flex;
+	flex-direction: column;
+	gap: 3.2rem;
+}
+
+#services .c-cards .c-card {
+	padding: 2.4rem;
+	background-color: white;
+	border: 0.1rem solid var(--brand-light);
+	border-radius: 0.6rem;
+	text-align: left;
+}
+
+#services .c-cards .c-card__h3 {
+	margin-block: 1.6rem;
+}
+
+/*! ABOUT */
+#about {
+	text-align: left;
+	background-color: var(--brand-beige);
+}
+
+#about header h2 {
+	margin-bottom: 2.4rem;
+}
+
+#about .content p {
+	margin-top: 2.4rem;
+	margin-bottom: 6rem;
 }
