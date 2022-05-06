@@ -7,11 +7,13 @@
 
 :root {
 	font-size: 62.5%; /* 1rem = 10px */
-	--primary-color: hsl(170, 100%, 26%);
+	--hue: 290;
+	--primary-color: hsl(var(--hue), 100%, 26%);
 	--headline: hsl(210, 11%, 15%);
 	--paragraph: hsl(210, 9%, 31%);
 	--brand-beige: hsl(39, 100%, 97%);
-	--brand-light: hsl(148, 23%, 89%);
+	--brand-light: hsl(calc(var(--hue) - (170 - 148)), 23%, 89%);
+	--brand-dark: hsl(var(--hue), 100%, 14%);
 	--bg-light: hsl(180, 14%, 97%);
 	--nav-height: 7.2rem;
 }
@@ -82,6 +84,60 @@ section .content p {
 	color: var(--paragraph);
 }
 
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 6rem;
+	padding: 1.6rem 3.2rem;
+	width: fit-content;
+	gap: 1.6rem;
+	background-color: var(--primary-color);
+	transition: background 200ms;
+	border: none;
+	border-radius: 4rem;
+	color: #ffffff;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 1.4rem;
+	font-weight: 700;
+}
+
+.button:hover {
+	background-color: var(--brand-dark);
+}
+
+.social-links {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 3.2rem;
+}
+
+/*! CUSTOM COLORS */
+#services .c-cards .c-card circle {
+	fill: var(--brand-light);
+}
+
+#backToTopButton circle,
+.c-nav__a-logo path[fill*='#00856F'] {
+	fill: var(--primary-color);
+}
+
+#contact li path,
+.c-nav .c-button-open-menu path[stroke*='#00856F'] {
+	stroke: var(--primary-color);
+}
+
+body.menu-expanded .c-nav__a-logo path,
+.c-nav.scroll .c-nav__a-logo path {
+	fill: white;
+}
+
+.c-nav.scroll .c-button-open-menu path[stroke*='#00856F'] {
+	stroke: white;
+}
+
 /*! NAVIGATION */
 .c-nav {
 	display: flex;
@@ -100,14 +156,6 @@ section .content p {
 
 .c-nav.scroll {
 	background-color: var(--primary-color);
-}
-
-.c-nav.scroll .c-nav__a-logo path {
-	fill: white;
-}
-
-.c-nav.scroll .c-button-open-menu path {
-	stroke: white;
 }
 
 .c-nav .c-button-open-menu,
@@ -170,6 +218,12 @@ body.menu-expanded .c-nav .c-menu {
 	margin-bottom: 8rem;
 }
 
+.c-nav .c-menu__a-button-schedule-appointment:hover {
+	background-color: var(--primary-color);
+	color: white;
+	filter: brightness(1.3);
+}
+
 .c-nav .c-menu__ul-items-links {
 	display: flex;
 	flex-direction: column;
@@ -185,21 +239,10 @@ body.menu-expanded .c-nav .c-menu {
 	text-decoration: none;
 }
 
-.c-nav .c-menu__ul-social-links {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 3.2rem;
-}
-
 body.menu-expanded .c-nav__a-logo,
 body.menu-expanded .c-nav .c-button-close {
 	position: relative;
 	z-index: 100;
-}
-
-body.menu-expanded .c-nav__a-logo path {
-	fill: white;
 }
 
 body.menu-expanded .c-nav .c-button-close path {
@@ -219,6 +262,10 @@ body.menu-expanded .c-nav .c-button-close path {
 	background-color: var(--brand-light);
 }
 
+.c-home .button {
+	margin-inline: auto;
+}
+
 .c-home {
 	padding-top: calc(4.1rem + var(--nav-height));
 	padding-bottom: 0;
@@ -230,23 +277,6 @@ body.menu-expanded .c-nav .c-button-close path {
 	font-weight: 400;
 	color: var(--paragraph);
 	margin-bottom: 3.2rem;
-}
-
-.c-home .c-button-schedule-appointment {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: 0 auto 6rem;
-	width: 26.3rem;
-	height: 5.2rem;
-	gap: 1.6rem;
-	background-color: var(--primary-color);
-	border: none;
-	border-radius: 4rem;
-	color: #ffffff;
-	text-transform: uppercase;
-	font-size: 1.4rem;
-	font-weight: 700;
 }
 
 .c-home .c-img {
@@ -318,4 +348,75 @@ body.menu-expanded .c-nav .c-button-close path {
 #about .content p {
 	margin-top: 2.4rem;
 	margin-bottom: 6rem;
+}
+
+/*! CONTACT */
+#contact {
+	text-align: left;
+}
+
+#contact header {
+	margin-bottom: 3.2rem;
+}
+
+#contact ul {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+	margin-bottom: 3.2rem;
+}
+
+#contact ul li {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+/*! FOOTER */
+footer {
+	background-color: var(--primary-color);
+	padding-block: 6rem;
+	text-align: left;
+	color: white;
+}
+
+.c-footer__a-logo {
+	display: inline-block;
+	margin-bottom: 2.4rem;
+}
+
+.c-footer__a-logo svg {
+	width: 23.6rem;
+	height: 3.1rem;
+}
+
+.c-footer__a-logo path {
+	fill: white;
+}
+
+footer p {
+	color: var(--brand-beige);
+	line-height: 2;
+	margin-bottom: 3.2rem;
+}
+
+footer .social-links {
+	justify-content: flex-start;
+}
+
+/*! BACK TO TOP */
+#backToTopButton {
+	position: fixed;
+	bottom: 1rem;
+	right: 3rem;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(100%);
+	transition: 200ms;
+}
+
+#backToTopButton.show {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
 }
