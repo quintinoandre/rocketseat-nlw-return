@@ -1,0 +1,75 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"airbnb",
+		"prettier",
+		"plugin:prettier/recommended",
+		"plugin:react/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"eslint-plugin-import-helpers",
+		"react",
+		"@typescript-eslint",
+		"prettier",
+		"unused-imports"
+	],
+	"rules": {
+		"prettier/prettier": "error",
+		"arrow-body-style": "off",
+		"prefer-arrow-callback": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+		"react/jsx-uses-react": 1,
+		"react/jsx-uses-vars": 1,
+		"import/prefer-default-export": "off",
+		"global-require": "off",
+		"react/react-in-jsx-scope": "off",
+		"react/jsx-filename-extension": "off",
+		"react/style-prop-object": "off",
+		"import/no-unresolved": "off",
+		"import/extensions": "off",
+		"camelcase": "off",
+		"func-names": "off",
+		"react/jsx-no-bind": "off",
+		"no-restricted-exports": "off",
+		"react/jsx-props-no-spreading": "off",
+		"no-console": "off",
+		"react/jsx-no-useless-fragment": "off",
+		"unused-imports/no-unused-imports": "error",
+		"unused-imports/no-unused-vars": [
+			"warn",
+			{
+				"vars": "all",
+				"varsIgnorePattern": "^_",
+				"args": "after-used",
+				"argsIgnorePattern": "^_"
+			}
+		],
+		"import-helpers/order-imports": [
+			"warn",
+			{
+				"newlinesBetween": "always",
+				"groups": [
+					"module",
+					"/^@server/shared/",
+					"/^@/",
+					["parent", "sibling", "index"]
+				],
+				"alphabetize": {
+					"order": "asc",
+					"ignoreCase": true
+				}
+			}
+		]
+	}
+}
