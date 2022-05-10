@@ -22,6 +22,6 @@ app.use(express.json());
 
 app.use(routes);
 
-app.listen(PORT, () => {
-	console.log(`Server HTTP started on port ${PORT}`);
+app.listen(PORT || 3330, () => {
+	console.log(`Server HTTP started on port ${PORT || 3330}`);
 });

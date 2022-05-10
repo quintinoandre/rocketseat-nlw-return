@@ -1,7 +1,9 @@
 import { ArrowLeft } from 'phosphor-react';
 import { FormEvent, useState } from 'react';
 
+import { api } from '../../../../lib/api';
 import { CloseButton } from '../../../CloseButton';
+import { Loading } from '../../../Loading';
 import { ScreenshotButton } from '../../ScreenshotButton';
 import { feedbackTypes } from '../FeedbackTypeStep';
 import styles from './styles';
@@ -10,13 +12,22 @@ import { IFeedbackContentStepProps } from './types';
 function FeedbackContentStep({ ...props }: IFeedbackContentStepProps) {
 	const [screenshot, setScreenshot] = useState<string | null>(null);
 	const [comment, setComment] = useState('');
+	const [isSendingFeedback, setIsSendingFeedback] = useState(false);
 
 	const feedbackTypeInfo = feedbackTypes[props.feedbackType];
 
-	function handleSubmitFeedback(event: FormEvent) {
+	async function handleSubmitFeedback(event: FormEvent) {
 		event.preventDefault();
 
-		console.log({ screenshot, comment });
+		setIsSendingFeedback(true);
+
+		await api.post('/feedbacks', {
+			type: props.feedbackType,
+			comment,
+			screenshot,
+		});
+
+		setIsSendingFeedback(false);
 
 		props.onFeedbackSent();
 	}
@@ -61,9 +72,9 @@ function FeedbackContentStep({ ...props }: IFeedbackContentStepProps) {
 					<button
 						type="submit"
 						className={styles['.c-card__footer__button']}
-						disabled={comment.length === 0}
+						disabled={comment.length === 0 || isSendingFeedback}
 					>
-						Send feedback
+						{isSendingFeedback ? <Loading /> : 'Send feedback'}
 					</button>
 				</footer>
 			</form>

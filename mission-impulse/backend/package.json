@@ -4,6 +4,8 @@
 	"description": "",
 	"main": "src/server.ts",
 	"scripts": {
+		"build":"tsc",
+		"start":"node dist/server.js",
 		"dev": "ts-node-dev -r dotenv/config --exit-child --transpile-only --respawn --ignore-watch node_modules --no-notify .",
 		"migration:create": "npx prisma migrate dev",
 		"see:database": "npx prisma studio",
